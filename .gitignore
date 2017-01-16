@@ -1,0 +1,15 @@
+.DS_Store
+thumbs.db
+desktop.ini
+._*
+*.o
+*.a
+*.exe
+*.lib
+/libBitIO/BUILD/*
+libBitIO/src/OldCode.c
+*.html
+*.xcuserstate
+*.xcbkptlist
+project.xcworkspace/
+xcuserdata/
