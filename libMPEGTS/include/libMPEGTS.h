@@ -15,6 +15,11 @@
 extern "C" {
 #endif
     
+    extern enum MPEGTSConstants {
+        MPEGTSMaxPrivateData     = 256,
+        PESPacketStartCodePrefix = 0x000001,
+    } MPEGTSConstants;
+    
     typedef struct PacketizedElementaryStream {
         int32_t  PacketStartCodePrefix:24;     // packet_start_code_prefix
         uint8_t  StreamID;                     // stream_id

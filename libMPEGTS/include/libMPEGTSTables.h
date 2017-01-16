@@ -4,10 +4,6 @@
 extern "C" {
 #endif
     
-    extern enum MPEGTSConstants {
-        MPEGTSMaxPrivateData = 256,
-    } MPEGTSConstants;
-    
     extern enum TSPIDTable {
         ProgramAssociationTable         =    0, // Program association table
         ConditionalAccesTable           =    1, // Conditional access table
