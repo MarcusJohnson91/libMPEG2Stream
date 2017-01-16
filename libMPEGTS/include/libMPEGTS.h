@@ -15,6 +15,30 @@
 extern "C" {
 #endif
     
+    typedef struct PacketizedElementaryStream {
+        int32_t  PacketStartCodePrefix:24;     // packet_start_code_prefix
+        uint8_t  StreamID;                     // stream_id
+        uint16_t PESPacketSize;                // PES_packet_length
+        uint8_t  PESScramblingControl;         // PES_scrambling_control
+        bool     PESPriority:1;                // PES_priority
+        bool     AlignmentIndicator:1;         // data_alignment_indicator
+        bool     CopyrightIndicator:1;         // copyright
+        bool     OriginalOrCopy:1;             // original_or_copy
+        uint8_t  PTSDTSFlags:2;                // PTS_DTS_flags
+        bool     ESCRFlag:1;                   // ESCR_flag
+        bool     ESRateFlag:1;                 // ES_rate_flag
+        bool     DSMTrickModeFlag:1;           // DSM_trick_mode_flag
+        bool     AdditionalCopyInfoFlag:1;     // additional_copy_info_flag
+        bool     PESCRCFlag:1;                 // PES_CRC_flag
+        bool     PESExtensionFlag:1;           // PES_extension_flag
+        uint8_t  PESHeaderSize;                // PES_header_data_length
+        uint64_t PTS:33;                       // PTS
+        uint64_t DTS:33;                       // DTS
+        uint64_t ESCR:33;                      // ESCR
+        uint32_t ESRate:22;                    // ES_rate
+        uint8_t  TrickModeControl:3;           // trick_mode_control
+    } PacketizedElementaryStream;
+    
     typedef struct TransportStreamPacket {
         int8_t   SyncByte;                     // sync_byte
         bool     TransportErrorIndicator:1;    // transport_error_indicator
@@ -55,8 +79,9 @@ extern "C" {
     } TSAdaptationField;
     
     typedef struct MPEGTransportStream {
-        TransportStreamPacket *Packet;
-        TSAdaptationField     *Adaptation;
+        TransportStreamPacket      *Packet;
+        TSAdaptationField          *Adaptation;
+        PacketizedElementaryStream *PES;
     } MPEGTransportStream;
     
 #ifdef __cplusplus
