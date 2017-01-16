@@ -15,9 +15,7 @@
 extern "C" {
 #endif
     
-    
-    
-    typedef struct MPEGTransportStream {
+    typedef struct TransportStreamPacket {
         int8_t   SyncByte;                     // sync_byte
         bool     TransportErrorIndicator:1;    // transport_error_indicator
         bool     StartOfPayloadIndicator:1;    // payload_unit_start_indicator
@@ -26,7 +24,7 @@ extern "C" {
         int8_t   TransportScramblingControl:2; // transport_scrambling_control
         int8_t   AdaptationFieldControl:2;     // adaptation_field_control
         uint8_t  ContinuityCounter:4;          // continuity_counter
-    } MPEGTransportStream;
+    } TransportStreamPacket;
     
     typedef struct TSAdaptationField {
         uint8_t  AdaptationFieldSize;                 // adaptation_field_length
@@ -39,6 +37,11 @@ extern "C" {
         bool     TransportPrivateDataFlag:1;          // transport_private_data_flag
         bool     AdaptationFieldExtensionFlag:1;      // adaptation_field_extension_flag
     } TSAdaptationField;
+    
+    typedef struct MPEGTransportStream {
+        TransportStreamPacket *Packet;
+        TSAdaptationField     *Adaptation;
+    } MPEGTransportStream;
     
 #ifdef __cplusplus
 }
