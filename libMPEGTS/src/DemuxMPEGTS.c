@@ -4,6 +4,27 @@
 extern "C" {
 #endif
     
+    void TSParseConditionalAccessSection() { // CA_section
+        
+    }
+    
+    void TSParseProgramAssociationTable(BitInput *BitI, MPEGTransportStream *Stream) { // program_association_section
+        Stream->Program->TableID                = ReadBits(BitI, 8);
+        Stream->Program->SectionSyntaxIndicator = ReadBits(BitI, 1);
+        SkipBits(BitI, 3); // "0" + 2 bits reserved.
+        Stream->Program->SectionSize            = ReadBits(BitI, 12);
+        Stream->Program->TransportStreamID      = ReadBits(BitI, 16);
+        SkipBits(BitI, 2); // Reserved
+        Stream->Program->VersionNum             = ReadBits(BitI, 5);
+        Stream->Program->CurrentNextIndicator   = ReadBits(BitI, 1);
+        Stream->Program->SectionNumber          = ReadBits(BitI, 8);
+        Stream->Program->LastSectionNumber      = ReadBits(BitI, 8);
+        Stream->Program->ProgramNumber          = ReadBits(BitI, 16);
+        Stream->Program->NetworkPID             = ReadBits(BitI, 13);
+        Stream->Program->ProgramMapPID          = ReadBits(BitI, 13);
+        Stream->Program->ProgramCRC32           = ReadBits(BitI, 32);
+    }
+    
     void TSParsePESPacket(BitInput *BitI, MPEGTransportStream *Stream) { // PES_packet
         int N3 = 0, N2 = 0, N1 = 0; // FIXME: WTF IS N3, N2, and N1?
         Stream->PES->PacketStartCodePrefix                     = ReadBits(BitI, 24);
@@ -287,6 +308,7 @@ extern "C" {
         Stream->Packet     = calloc(sizeof(TransportStreamPacket), 1);
         Stream->Adaptation = calloc(sizeof(TSAdaptationField), 1);
         Stream->PES        = calloc(sizeof(PacketizedElementaryStream), 1);
+        Stream->Program    = calloc(sizeof(ProgramAssociatedSection), 1);
     }
     
 #ifdef __cplusplus

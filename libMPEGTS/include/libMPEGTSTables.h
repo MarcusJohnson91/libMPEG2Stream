@@ -53,6 +53,19 @@ extern "C" {
         SlowRewind  = 4,
     } TSTrickModeTypes;
     
+    extern enum TSFieldID {
+        TopFieldOnly    = 0,
+        BottomFieldOnly = 1,
+        DisplayFullPic  = 2,
+    } TSFieldID;
+    
+    extern enum CoefficentSelection {
+        OnlyDCCoeffsAreNonZero     = 0,
+        OnlyFirst3CoeffsAreNonZero = 1,
+        OnlyFirst6CoeffsAreNonZero = 2,
+        AllCoeffsMayBeNonZero      = 3,
+    } CoefficentSelection;
+    
 #ifdef __cplusplus
 }
 #endif

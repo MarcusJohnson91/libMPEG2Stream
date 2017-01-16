@@ -18,7 +18,23 @@ extern "C" {
     extern enum MPEGTSConstants {
         MPEGTSMaxPrivateData     = 256,
         PESPacketStartCodePrefix = 0x000001,
+        PESPacketCRCPolynomial   = 0x8811,
     } MPEGTSConstants;
+    
+    typedef struct ProgramAssociatedSection {
+        uint8_t  TableID;                      // table_id
+        bool     SectionSyntaxIndicator:1;     // section_syntax_indicator
+        uint16_t SectionSize:12;               // section_length
+        uint16_t TransportStreamID;            // transport_stream_id
+        uint8_t  VersionNum:5;                 // version_number
+        bool     CurrentNextIndicator:1;       // current_next_indicator
+        uint8_t  SectionNumber;                // section_number
+        uint8_t  LastSectionNumber;            // last_section_number
+        uint16_t ProgramNumber;                // program_number
+        uint16_t NetworkPID:13;                // network_PID
+        uint16_t ProgramMapPID:13;             // program_map_PID
+        uint32_t ProgramCRC32;                 // CRC_32
+    } ProgramAssociatedSection;
     
     typedef struct PacketizedElementaryStream {
         int32_t  PacketStartCodePrefix:24;     // packet_start_code_prefix
@@ -63,7 +79,7 @@ extern "C" {
         bool     StreamIDExtensionFlag:1;       // stream_id_extension_flag
         uint8_t  StreamIDExtension:7;           // stream_id_extension
         bool     TREFFieldPresentFlag:1;        // tref_extension_flag
-        uint32_t TREF;                          // TREF
+        uint64_t TREF:33;                       // TREF
     } PacketizedElementaryStream;
     
     typedef struct TransportStreamPacket {
@@ -109,6 +125,7 @@ extern "C" {
         TransportStreamPacket      *Packet;
         TSAdaptationField          *Adaptation;
         PacketizedElementaryStream *PES;
+        ProgramAssociatedSection   *Program;
     } MPEGTransportStream;
     
 #ifdef __cplusplus
