@@ -23,20 +23,42 @@ extern "C" {
         bool     PESPriority:1;                // PES_priority
         bool     AlignmentIndicator:1;         // data_alignment_indicator
         bool     CopyrightIndicator:1;         // copyright
-        bool     OriginalOrCopy:1;             // original_or_copy
-        uint8_t  PTSDTSFlags:2;                // PTS_DTS_flags
-        bool     ESCRFlag:1;                   // ESCR_flag
-        bool     ESRateFlag:1;                 // ES_rate_flag
-        bool     DSMTrickModeFlag:1;           // DSM_trick_mode_flag
-        bool     AdditionalCopyInfoFlag:1;     // additional_copy_info_flag
-        bool     PESCRCFlag:1;                 // PES_CRC_flag
-        bool     PESExtensionFlag:1;           // PES_extension_flag
-        uint8_t  PESHeaderSize;                // PES_header_data_length
-        uint64_t PTS:33;                       // PTS
-        uint64_t DTS:33;                       // DTS
-        uint64_t ESCR:33;                      // ESCR
-        uint32_t ESRate:22;                    // ES_rate
-        uint8_t  TrickModeControl:3;           // trick_mode_control
+        bool     OriginalOrCopy:1;              // original_or_copy
+        uint8_t  PTSDTSFlags:2;                 // PTS_DTS_flags
+        bool     ESCRFlag:1;                    // ESCR_flag
+        bool     ESRateFlag:1;                  // ES_rate_flag
+        bool     DSMTrickModeFlag:1;            // DSM_trick_mode_flag
+        bool     AdditionalCopyInfoFlag:1;      // additional_copy_info_flag
+        bool     PESCRCFlag:1;                  // PES_CRC_flag
+        bool     PESExtensionFlag:1;            // PES_extension_flag
+        uint8_t  PESHeaderSize;                 // PES_header_data_length
+        uint64_t PTS:33;                        // PTS
+        uint64_t DTS:33;                        // DTS
+        uint64_t ESCR:33;                       // ESCR
+        uint32_t ESRate:22;                     // ES_rate
+        uint8_t  TrickModeControl:3;            // trick_mode_control
+        uint8_t  FieldID:2;                     // field_id
+        bool     IntraSliceRefresh:1;           // intra_slice_refresh
+        uint8_t  FrequencyTruncation:2;         // frequency_truncation
+        uint8_t  RepetitionControl:5;           // rep_cntrl
+        uint8_t  AdditionalCopyInfo:7;          // additional_copy_info
+        uint16_t PreviousPESPacketCRC;          // previous_PES_packet_CRC
+        bool     PESPrivateDataFlag:1;          // PES_private_data_flag
+        bool     PackHeaderFieldFlag:1;         // pack_header_field_flag
+        bool     ProgramPacketSeqCounterFlag:1; // program_packet_sequence_counter_flag
+        bool     PSTDBufferFlag:1;              // P-STD_buffer_flag
+        bool     PESExtensionFlag2:1;           // PES_extension_flag_2
+        uint8_t  PackFieldSize;                 // pack_field_length
+        uint8_t  ProgramPacketSeqCounter:7;     // program_packet_sequence_counter
+        bool     MPEGVersionIdentifier:1;       // MPEG1_MPEG2_identifier
+        uint8_t  OriginalStuffSize:6;           // original_stuff_length
+        uint8_t  PSTDBufferScale:1;             // P-STD_buffer_scale
+        uint16_t PSTDBufferSize:13;             // P-STD_buffer_size
+        uint8_t  PESExtensionFieldSize:7;       // PES_extension_field_length
+        bool     StreamIDExtensionFlag:1;       // stream_id_extension_flag
+        uint8_t  StreamIDExtension:7;           // stream_id_extension
+        bool     TREFFieldPresentFlag:1;        // tref_extension_flag
+        uint32_t TREF;                          // TREF
     } PacketizedElementaryStream;
     
     typedef struct TransportStreamPacket {
