@@ -3,11 +3,10 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-    /*
+    
     extern enum MPEGTSConstants {
-        
+        MPEGTSMaxPrivateData = 256,
     } MPEGTSConstants;
-     */
     
     extern enum PIDTable {
         ProgramAssociationTable         =    0, // Program association table

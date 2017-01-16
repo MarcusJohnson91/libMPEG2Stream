@@ -36,6 +36,22 @@ extern "C" {
         bool     SlicingPointFlag:1;                  // splicing_point_flag
         bool     TransportPrivateDataFlag:1;          // transport_private_data_flag
         bool     AdaptationFieldExtensionFlag:1;      // adaptation_field_extension_flag
+        uint64_t ProgramClockReferenceBase:33;        // program_clock_reference_base
+        uint16_t ProgramClockReferenceExtension:9;    // program_clock_reference_extension
+        uint64_t OriginalProgramClockRefBase:33;      // original_program_clock_reference_base
+        uint16_t OriginalProgramClockRefExt:9;        // original_program_clock_reference_extension
+        int8_t   SpliceCountdown;                     // splice_countdown
+        uint8_t  TransportPrivateDataSize;            // transport_private_data_length
+        uint8_t  TransportPrivateData[MPEGTSMaxPrivateData];           // private_data_byte
+        uint8_t  AdaptationFieldExtensionSize;        // adaptation_field_extension_length
+        bool     LegalTimeWindowFlag:1;               // ltw_flag
+        bool     PiecewiseRateFlag:1;                 // piecewise_rate_flag
+        bool     SeamlessSpliceFlag:1;                // seamless_splice_flag
+        bool     LegalTimeWindowValidFlag:1;          // ltw_valid_flag
+        uint16_t LegalTimeWindowOffset:15;            // ltw_offset
+        uint32_t PiecewiseRate:22;                    // piecewise_rate
+        uint8_t  SpliceType:4;                        // Splice_type
+        uint64_t DecodeTimeStampNextAU:33;            // DTS_next_AU
     } TSAdaptationField;
     
     typedef struct MPEGTransportStream {
