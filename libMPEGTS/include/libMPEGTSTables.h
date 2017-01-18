@@ -9,7 +9,6 @@ extern "C" {
         ConditionalAccesTable           =    1, // Conditional access table
         TransportStreamDescriptionTable =    2, // Transport stream description table
         IPMPControlInfoTable            =    3, // Intellectual Property Management and Protection
-                                                // 4-15 are reserved
         LastReserved                    = 8191,
     } PIDTable;
     

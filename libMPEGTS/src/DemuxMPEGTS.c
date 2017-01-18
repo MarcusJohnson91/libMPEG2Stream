@@ -3,12 +3,220 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+    extern enum MPEGTSConstants {
+        MPEGProgramStreamMagic      = 0x000001B3,
+        MPEGTransportStreamMagic    = 0x0000,
+        
+        
+        MPEGTSMaxPrivateData        = 256,
+        PESPacketStartCodePrefix    = 0x000001,
+        PESPacketCRCPolynomial      = 0x8811,
+        MPEGTSSystemHeaderStartCode = 0x0, // system_header_start_code
+    } MPEGTSConstants;
     
-    void TSParseConditionalAccessSection() { // CA_section
+    typedef struct TransportStream { // Most basic level, consists of CRCs and metadata describing the Program Stream
+        
+    } TransportStream;
+    
+    typedef struct ProgramStream { // Can be the most basic level as well as the TransportStream, may also be included in a Transport Stream?
+        
+    } ProgramStream;
+    
+    typedef struct ElementaryStream { // This is contains the actual video and audio streams, it differs from them by offering a very thin layer on top to split the NALs and SliceGroups into packets.
+        
+    } ElementaryStream;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    typedef struct ConditionalAccessSection {
+        uint8_t  TableID;                             // table_id
+        bool     SectionSyntaxIndicator:1;            // section_syntax_indicator
+        uint16_t SectionSize:12;                      // section_length
+        uint8_t  VersionNum:5;                        // version_number
+        bool     CurrentNextIndicator:1;              // current_next_indicator
+        uint8_t  SectionNumber;                       // section_number
+        uint8_t  LastSectionNumber;                   // last_section_number
+        uint32_t ConditionCRC32;                      // CRC_32
+    } ConditionalAccessSection;
+    
+    typedef struct ProgramAssociatedSection {
+        uint8_t  TableID;                             // table_id
+        bool     SectionSyntaxIndicator:1;            // section_syntax_indicator
+        uint16_t SectionSize:12;                      // section_length
+        uint16_t TransportStreamID;                   // transport_stream_id
+        uint8_t  VersionNum:5;                        // version_number
+        bool     CurrentNextIndicator:1;              // current_next_indicator
+        uint8_t  SectionNumber;                       // section_number
+        uint8_t  LastSectionNumber;                   // last_section_number
+        uint16_t ProgramNumber;                       // program_number
+        uint16_t NetworkPID:13;                       // network_PID
+        uint16_t ProgramMapPID:13;                    // program_map_PID
+        uint32_t ProgramCRC32;                        // CRC_32
+    } ProgramAssociatedSection;
+    
+    typedef struct PacketizedElementaryStream {
+        int32_t  PacketStartCodePrefix:24;            // packet_start_code_prefix
+        uint8_t  StreamID;                            // stream_id
+        uint16_t PESPacketSize;                       // PES_packet_length
+        uint8_t  PESScramblingControl;                // PES_scrambling_control
+        bool     PESPriority:1;                       // PES_priority
+        bool     AlignmentIndicator:1;                // data_alignment_indicator
+        bool     CopyrightIndicator:1;                // copyright
+        bool     OriginalOrCopy:1;                    // original_or_copy
+        uint8_t  PTSDTSFlags:2;                       // PTS_DTS_flags
+        bool     ESCRFlag:1;                          // ESCR_flag
+        bool     ESRateFlag:1;                        // ES_rate_flag
+        bool     DSMTrickModeFlag:1;                  // DSM_trick_mode_flag
+        bool     AdditionalCopyInfoFlag:1;            // additional_copy_info_flag
+        bool     PESCRCFlag:1;                        // PES_CRC_flag
+        bool     PESExtensionFlag:1;                  // PES_extension_flag
+        uint8_t  PESHeaderSize;                       // PES_header_data_length
+        uint64_t PTS:33;                              // PTS
+        uint64_t DTS:33;                              // DTS
+        uint64_t ESCR:33;                             // ESCR
+        uint32_t ESRate:22;                           // ES_rate
+        uint8_t  TrickModeControl:3;                  // trick_mode_control
+        uint8_t  FieldID:2;                           // field_id
+        bool     IntraSliceRefresh:1;                 // intra_slice_refresh
+        uint8_t  FrequencyTruncation:2;               // frequency_truncation
+        uint8_t  RepetitionControl:5;                 // rep_cntrl
+        uint8_t  AdditionalCopyInfo:7;                // additional_copy_info
+        uint16_t PreviousPESPacketCRC;                // previous_PES_packet_CRC
+        bool     PESPrivateDataFlag:1;                // PES_private_data_flag
+        bool     PackHeaderFieldFlag:1;               // pack_header_field_flag
+        bool     ProgramPacketSeqCounterFlag:1;       // program_packet_sequence_counter_flag
+        bool     PSTDBufferFlag:1;                    // P-STD_buffer_flag
+        bool     PESExtensionFlag2:1;                 // PES_extension_flag_2
+        uint8_t  PackFieldSize;                       // pack_field_length
+        uint8_t  ProgramPacketSeqCounter:7;           // program_packet_sequence_counter
+        bool     MPEGVersionIdentifier:1;             // MPEG1_MPEG2_identifier
+        uint8_t  OriginalStuffSize:6;                 // original_stuff_length
+        uint8_t  PSTDBufferScale:1;                   // P-STD_buffer_scale
+        uint16_t PSTDBufferSize:13;                   // P-STD_buffer_size
+        uint8_t  PESExtensionFieldSize:7;             // PES_extension_field_length
+        bool     StreamIDExtensionFlag:1;             // stream_id_extension_flag
+        uint8_t  StreamIDExtension:7;                 // stream_id_extension
+        bool     TREFFieldPresentFlag:1;              // tref_extension_flag
+        uint64_t TREF:33;                             // TREF
+    } PacketizedElementaryStream;
+    
+    typedef struct TransportStreamPacket {
+        int8_t   SyncByte;                            // sync_byte
+        bool     TransportErrorIndicator:1;           // transport_error_indicator
+        bool     StartOfPayloadIndicator:1;           // payload_unit_start_indicator
+        bool     TransportPriorityIndicator:1;        // transport_priority
+        uint16_t PID:13;                              // PID
+        int8_t   TransportScramblingControl:2;        // transport_scrambling_control
+        int8_t   AdaptationFieldControl:2;            // adaptation_field_control
+        uint8_t  ContinuityCounter:4;                 // continuity_counter
+    } TransportStreamPacket;
+    
+    typedef struct TSAdaptationField {
+        uint8_t  AdaptationFieldSize;                 // adaptation_field_length
+        bool     DiscontinuityIndicator:1;            // discontinuity_indicator
+        bool     RandomAccessIndicator:1;             // random_access_indicator
+        bool     ElementaryStreamPriorityIndicator:1; // elementary_stream_priority_indicator
+        bool     PCRFlag:1;                           // PCR_flag
+        bool     OPCRFlag:1;                          // OPCR_flag
+        bool     SlicingPointFlag:1;                  // splicing_point_flag
+        bool     TransportPrivateDataFlag:1;          // transport_private_data_flag
+        bool     AdaptationFieldExtensionFlag:1;      // adaptation_field_extension_flag
+        uint64_t ProgramClockReferenceBase:33;        // program_clock_reference_base
+        uint16_t ProgramClockReferenceExtension:9;    // program_clock_reference_extension
+        uint64_t OriginalProgramClockRefBase:33;      // original_program_clock_reference_base
+        uint16_t OriginalProgramClockRefExt:9;        // original_program_clock_reference_extension
+        int8_t   SpliceCountdown;                     // splice_countdown
+        uint8_t  TransportPrivateDataSize;            // transport_private_data_length
+        uint8_t  TransportPrivateData[MPEGTSMaxPrivateData];           // private_data_byte
+        uint8_t  AdaptationFieldExtensionSize;        // adaptation_field_extension_length
+        bool     LegalTimeWindowFlag:1;               // ltw_flag
+        bool     PiecewiseRateFlag:1;                 // piecewise_rate_flag
+        bool     SeamlessSpliceFlag:1;                // seamless_splice_flag
+        bool     LegalTimeWindowValidFlag:1;          // ltw_valid_flag
+        uint16_t LegalTimeWindowOffset:15;            // ltw_offset
+        uint32_t PiecewiseRate:22;                    // piecewise_rate
+        uint8_t  SpliceType:4;                        // Splice_type
+        uint64_t DecodeTimeStampNextAU:33;            // DTS_next_AU
+    } TSAdaptationField;
+    
+    typedef struct ProgramStream {
+        uint8_t  PackStartCode;                        // pack_start_code
+        uint8_t  SystemClockRefBase1:3;                // system_clock_reference_base [32..30]
+        uint16_t SystemClockRefBase2:15;               // system_clock_reference_base [29..15]
+        uint16_t SystemClockRefBase3:15;               // system_clock_reference_base [14..0]
+        uint64_t SystemClockRefBase:33;                // system_clock_reference_base
+        uint16_t SystemClockRefExtension:9;            // system_clock_reference_extension
+        uint32_t ProgramMuxRate:22;                    // program_mux_rate
+        uint8_t  PackStuffingSize:3;                   // pack_stuffing_length
+    } ProgramStream;
+    
+    
+    
+    
+    
+    
+    
+    void DemuxMPEGTransportStream(BitInput *BitI, MPEGTransportStream *Stream) { // Main, user facing function
         
     }
     
-    void TSParseProgramAssociationTable(BitInput *BitI, MPEGTransportStream *Stream) { // program_association_section
+    MPEGTransportStream *InitMPEGTransportStream(void) {
+        MPEGTransportStream *Stream = calloc(sizeof(MPEGTransportStream), 1);
+        Stream->Packet              = calloc(sizeof(TransportStreamPacket), 1);
+        Stream->Adaptation          = calloc(sizeof(TSAdaptationField), 1);
+        Stream->PES                 = calloc(sizeof(PacketizedElementaryStream), 1);
+        Stream->Program             = calloc(sizeof(ProgramAssociatedSection), 1);
+        Stream->Condition           = calloc(sizeof(ConditionalAccessSection), 1);
+        Stream->PS                  = calloc(sizeof(ProgramStream), 1);
+        return Stream;
+    }
+    
+    static void TSParseConditionalAccessDescriptor(BitInput *BitI, MPEGTransportStream *Stream) { // CA_descriptor
+        int N = 0; // TODO: what is N?
+        uint8_t  DescriptorTag         = ReadBits(BitI, 8);  // descriptor_tag
+        uint8_t  DescriptorSize        = ReadBits(BitI, 8);  // descriptor_length
+        uint16_t ConditionalAccessID   = ReadBits(BitI, 16); // CA_system_ID
+        SkipBits(BitI, 3); // reserved
+        uint16_t  ConditionalAccessPID = ReadBits(BitI, 13);
+        for (int i = 0; i < N; i++) {
+            SkipBits(BitI, 8); // private_data_byte
+        }
+    }
+    
+    static void TSParseConditionalAccessSection(BitInput *BitI, MPEGTransportStream *Stream) { // CA_section
+        int N = 0; // TODO: find out what the hell N is
+        Stream->Condition->TableID                = ReadBits(BitI, 8);
+        Stream->Condition->SectionSyntaxIndicator = ReadBits(BitI, 1);
+        SkipBits(BitI, 3); // "0" + 2 bits reserved.
+        Stream->Condition->SectionSize            = ReadBits(BitI, 12);
+        SkipBits(BitI, 18);
+        Stream->Condition->VersionNum             = ReadBits(BitI, 5);
+        Stream->Condition->CurrentNextIndicator   = ReadBits(BitI, 1);
+        Stream->Condition->SectionNumber          = ReadBits(BitI, 8);
+        Stream->Condition->LastSectionNumber      = ReadBits(BitI, 8);
+        for (int i = 0; i < N; i++) {
+            TSParseConditionalAccessDescriptor(BitI, Stream);
+        }
+        Stream->Condition->ConditionCRC32         = ReadBits(BitI, 32);
+    }
+    
+    static void TSParseProgramAssociationTable(BitInput *BitI, MPEGTransportStream *Stream) { // program_association_section
         Stream->Program->TableID                = ReadBits(BitI, 8);
         Stream->Program->SectionSyntaxIndicator = ReadBits(BitI, 1);
         SkipBits(BitI, 3); // "0" + 2 bits reserved.
@@ -25,7 +233,31 @@ extern "C" {
         Stream->Program->ProgramCRC32           = ReadBits(BitI, 32);
     }
     
-    void TSParsePESPacket(BitInput *BitI, MPEGTransportStream *Stream) { // PES_packet
+    static void TSParseProgramStreamPackHeader(BitInput *BitI, MPEGTransportStream *Stream) { // pack_header
+        Stream->PS->PackStartCode = ReadBits(BitI, 32);
+        SkipBits(BitI, 2); // 01
+        Stream->PS->SystemClockRefBase1 = ReadBits(BitI, 3);
+        SkipBits(BitI, 1); // marker_bit
+        Stream->PS->SystemClockRefBase2 = ReadBits(BitI, 15);
+        SkipBits(BitI, 1); // marker_bit
+        Stream->PS->SystemClockRefBase3 = ReadBits(BitI, 15);
+        SkipBits(BitI, 1); // marker_bit
+        Stream->PS->SystemClockRefBase   = Stream->PS->SystemClockRefBase1 << 30;
+        Stream->PS->SystemClockRefBase  += Stream->PS->SystemClockRefBase2 << 15;
+        Stream->PS->SystemClockRefBase  += Stream->PS->SystemClockRefBase3;
+        
+        Stream->PS->SystemClockRefExtension = ReadBits(BitI, 9);
+        SkipBits(BitI, 1); // marker_bit
+        Stream->PS->ProgramMuxRate          = ReadBits(BitI, 22);
+        SkipBits(BitI, 7); // marker_bit && reserved
+        Stream->PS->PackStuffingSize        = ReadBits(BitI, 3);
+        SkipBits(BitI, Bytes2Bits(Stream->PS->PackStuffingSize));
+        if (PeekBits(BitI, 0) == MPEGTSSystemHeaderStartCode) {
+            // system_header();
+        }
+    }
+    
+    static void TSParsePESPacket(BitInput *BitI, MPEGTransportStream *Stream) { // PES_packet
         int N3 = 0, N2 = 0, N1 = 0; // FIXME: WTF IS N3, N2, and N1?
         Stream->PES->PacketStartCodePrefix                     = ReadBits(BitI, 24);
         Stream->PES->StreamID                                  = ReadBits(BitI, 8);
@@ -216,7 +448,7 @@ extern "C" {
         }
     }
     
-    void TSParseAdaptionField(BitInput *BitI, MPEGTransportStream *Stream) { // adaptation_field
+    static void TSParseAdaptionField(BitInput *BitI, MPEGTransportStream *Stream) { // adaptation_field
         int N = 0; // FIXME: WHAT THE FUCK IS N?
         Stream->Adaptation->AdaptationFieldSize                = ReadBits(BitI, 8);
         Stream->Adaptation->DiscontinuityIndicator             = ReadBits(BitI, 1);
@@ -284,7 +516,7 @@ extern "C" {
         }
     }
     
-    void TSParsePacket(BitInput *BitI, MPEGTransportStream *Stream) { // transport_packet
+    static void TSParsePacket(BitInput *BitI, MPEGTransportStream *Stream) { // transport_packet
         Stream->Packet->SyncByte                   = ReadBits(BitI, 8);
         Stream->Packet->TransportErrorIndicator    = ReadBits(BitI, 1);
         Stream->Packet->StartOfPayloadIndicator    = ReadBits(BitI, 1);
@@ -304,11 +536,16 @@ extern "C" {
         }
     }
     
-    void InitMPEGTransportStream(MPEGTransportStream *Stream) {
-        Stream->Packet     = calloc(sizeof(TransportStreamPacket), 1);
-        Stream->Adaptation = calloc(sizeof(TSAdaptationField), 1);
-        Stream->PES        = calloc(sizeof(PacketizedElementaryStream), 1);
-        Stream->Program    = calloc(sizeof(ProgramAssociatedSection), 1);
+    static void ParseTransportStreamLayer() {
+        
+    }
+    
+    static void ParseElementaryStreamLayer() {
+        
+    }
+    
+    static void ParsePESLayer() {
+        
     }
     
 #ifdef __cplusplus
