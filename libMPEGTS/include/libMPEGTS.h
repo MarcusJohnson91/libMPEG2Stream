@@ -47,8 +47,12 @@ extern "C" {
         PacketizedElementaryStream *PES;
         ProgramAssociatedSection   *Program;
         ConditionalAccessSection   *Condition;
-        ProgramStream              *PS;
     } MPEGTransportStream;
+    
+    typedef struct MPEGProgramStream {
+        ProgramStream              *PS;
+        PacketizedElementaryStream *PES;
+    } MPEGProgramStream;
     
     /*!
      @abstract     Main Demuxing function
