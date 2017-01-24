@@ -1,4 +1,4 @@
-#include "../include/libMPEGTS.h"
+#include "../include/libMPEG2Stream.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -14,6 +14,10 @@ extern "C" {
     // Access Unit = A coded representation of a Presentation Unit. In audio, an AU = a frame. in video, an AU = a picture + all padding and metadata.
     // PacketID    = an int that identifies elementary streams (audio or video) in a program.
     // Program     = Elementary streams that are to be played synchronized with the same time base.
+    
+    // Transport Streams CAN CONTAIN PROGRAM STREAMS, OR ELEMENTARY STREAMS.
+    
+    // So, for Demuxing, the general idea is to accumulate PES packets until you've got a whole NAL or whateve?
     
     extern enum MPEGTSConstants {
         MPEGStartCode               = 0x000001, // Both Program Stream and Transport Stream
@@ -84,24 +88,6 @@ extern "C" {
         uint64_t TREF:33;                             // TREF
     } PacketizedElementaryStream;
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     typedef struct ConditionalAccessSection {
         uint8_t  TableID;                             // table_id
         bool     SectionSyntaxIndicator:1;            // section_syntax_indicator
@@ -167,8 +153,8 @@ extern "C" {
         uint64_t DecodeTimeStampNextAU:33;            // DTS_next_AU
     } TSAdaptationField;
     
-    MPEGTransportStream *InitMPEGTransportStream(void) {
-        MPEGTransportStream *TransportStream = calloc(sizeof(MPEGTransportStream), 1);
+    MPEG2TransportStream *InitMPEGTransportStream(void) {
+        MPEG2TransportStream *TransportStream = calloc(sizeof(MPEG2TransportStream), 1);
         TransportStream->Packet              = calloc(sizeof(TransportStreamPacket), 1);
         TransportStream->Adaptation          = calloc(sizeof(TSAdaptationField), 1);
         TransportStream->PES                 = calloc(sizeof(PacketizedElementaryStream), 1);
@@ -177,14 +163,14 @@ extern "C" {
         return TransportStream;
     }
     
-    MPEGProgramStream *InitMPEGProgramStream(void) {
-        MPEGProgramStream *ProgramStream     = calloc(sizeof(MPEGProgramStream), 1);
+    MPEG2ProgramStream *InitMPEGProgramStream(void) {
+        MPEG2ProgramStream *ProgramStream     = calloc(sizeof(MPEG2ProgramStream), 1);
         ProgramStream->PS                    = calloc(sizeof(ProgramStream), 1);
         ProgramStream->PES                   = calloc(sizeof(PacketizedElementaryStream), 1);
         return ProgramStream;
     }
     
-    static void ParseConditionalAccessDescriptor(BitInput *BitI, MPEGTransportStream *Stream) { // CA_descriptor
+    static void ParseConditionalAccessDescriptor(BitInput *BitI, MPEG2TransportStream *Stream) { // CA_descriptor
         int N = 0; // TODO: what is N?
         uint8_t  DescriptorTag         = ReadBits(BitI, 8);  // descriptor_tag
         uint8_t  DescriptorSize        = ReadBits(BitI, 8);  // descriptor_length
@@ -196,7 +182,7 @@ extern "C" {
         }
     }
     
-    static void ParseConditionalAccessSection(BitInput *BitI, MPEGTransportStream *Stream) { // CA_section
+    static void ParseConditionalAccessSection(BitInput *BitI, MPEG2TransportStream *Stream) { // CA_section
         int N = 0; // TODO: find out what the hell N is
         Stream->Condition->TableID                = ReadBits(BitI, 8);
         Stream->Condition->SectionSyntaxIndicator = ReadBits(BitI, 1);
@@ -213,7 +199,7 @@ extern "C" {
         Stream->Condition->ConditionCRC32         = ReadBits(BitI, 32);
     }
     
-    static void ParseProgramAssociationTable(BitInput *BitI, MPEGTransportStream *Stream) { // program_association_section
+    static void ParseProgramAssociationTable(BitInput *BitI, MPEG2TransportStream *Stream) { // program_association_section
         Stream->Program->TableID                = ReadBits(BitI, 8);
         Stream->Program->SectionSyntaxIndicator = ReadBits(BitI, 1);
         SkipBits(BitI, 3); // "0" + 2 bits reserved.
@@ -230,7 +216,7 @@ extern "C" {
         Stream->Program->ProgramCRC32           = ReadBits(BitI, 32);
     }
     
-    static void ParsePackHeader(BitInput *BitI, MPEGProgramStream *Stream) { // pack_header
+    static void ParsePackHeader(BitInput *BitI, MPEG2ProgramStream *Stream) { // pack_header
         Stream->PS->PackStartCode = ReadBits(BitI, 32);
         SkipBits(BitI, 2); // 01
         Stream->PS->SystemClockRefBase1 = ReadBits(BitI, 3);
@@ -257,8 +243,8 @@ extern "C" {
     static void ParsePESPacket(BitInput *BitI, PacketizedElementaryStream *Stream) { // PES_packet
         int N3 = 0, N2 = 0, N1 = 0; // FIXME: WTF IS N3, N2, and N1?
         Stream->PacketStartCodePrefix                     = ReadBits(BitI, 24);
-        Stream->StreamID                                  = ReadBits(BitI, 8);
-        Stream->PESPacketSize                             = ReadBits(BitI, 16);
+        Stream->StreamID                                  = ReadBits(BitI, 8); // 13
+        Stream->PESPacketSize                             = ReadBits(BitI, 16); //
         if (Stream->StreamID != ProgramStreamFolder &&
             Stream->StreamID != AnnexA_DSMCCStream &&
             Stream->StreamID != ProgramStreamMap &&
@@ -445,7 +431,7 @@ extern "C" {
         }
     }
     
-    static void TSParseAdaptionField(BitInput *BitI, MPEGTransportStream *Stream) { // adaptation_field
+    static void TSParseAdaptionField(BitInput *BitI, MPEG2TransportStream *Stream) { // adaptation_field
         int N = 0; // FIXME: WHAT THE FUCK IS N?
         Stream->Adaptation->AdaptationFieldSize                = ReadBits(BitI, 8);
         Stream->Adaptation->DiscontinuityIndicator             = ReadBits(BitI, 1);
@@ -513,7 +499,7 @@ extern "C" {
         }
     }
     
-    static void ParseTransportStreamPacket(BitInput *BitI, MPEGTransportStream *Stream) { // transport_packet
+    static void ParseTransportStreamPacket(BitInput *BitI, MPEG2TransportStream *Stream) { // transport_packet
         Stream->Packet->SyncByte                   = ReadBits(BitI, 8);
         Stream->Packet->TransportErrorIndicator    = ReadBits(BitI, 1);
         Stream->Packet->StartOfPayloadIndicator    = ReadBits(BitI, 1);
@@ -531,6 +517,18 @@ extern "C" {
                 SkipBits(BitI, 8); // data_byte
             }
         }
+    }
+    
+    void DemuxMPEG2PESPackets(BitInput *BitI, MPEG2TransportStream *Stream) {
+        
+    }
+    
+    void DemuxMPEG2ProgramStream(BitInput *BitI, MPEG2TransportStream *Stream) {
+        
+    }
+    
+    void DemuxMPEG2TransportStream(BitInput *BitI, MPEG2TransportStream *Stream) {
+        
     }
     
 #ifdef __cplusplus

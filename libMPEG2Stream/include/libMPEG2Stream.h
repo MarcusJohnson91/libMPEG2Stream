@@ -6,8 +6,8 @@
  @brief     This library contains a muxer and demuxer for MPEG2-TS aka H.222 streams
  */
 
-#include "/usr/local/Packages/BitIO/include/BitIO.h"
-#include "libMPEGTSTables.h"
+#include "/usr/local/Packages/libBitIO/include/BitIO.h"
+#include "libMPEG2StreamTables.h"
 
 #pragma once
 
@@ -41,23 +41,23 @@ extern "C" {
     
     typedef struct ProgramStream ProgramStream;
     
-    typedef struct MPEGTransportStream {
+    typedef struct MPEG2TransportStream {
         TransportStreamPacket      *Packet;
         TSAdaptationField          *Adaptation;
         PacketizedElementaryStream *PES;
         ProgramAssociatedSection   *Program;
         ConditionalAccessSection   *Condition;
-    } MPEGTransportStream;
+    } MPEG2TransportStream;
     
-    typedef struct MPEGProgramStream {
+    typedef struct MPEG2ProgramStream {
         ProgramStream              *PS;
         PacketizedElementaryStream *PES;
-    } MPEGProgramStream;
+    } MPEG2ProgramStream;
     
     /*!
      @abstract     Main Demuxing function
      */
-    void DemuxMPEGTransportStream(BitInput *BitI, MPEGTransportStream *Stream);
+    void DemuxMPEGTransportStream(BitInput *BitI, MPEG2TransportStream *Stream);
     
 #ifdef __cplusplus
 }

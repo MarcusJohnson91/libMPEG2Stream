@@ -1,5 +1,5 @@
-PACKAGE_NAME        := libMPEGTS
-FILE                := $(CURDIR)/libMPEGTS/include/libMPEGTS.h
+PACKAGE_NAME        := libMPEG2Stream
+FILE                := $(CURDIR)/libMPEG2Stream/include/libMPEG2Stream.h
 VERSION             := $(shell cat ${FILE} | grep -e "@version")
 CC                  := cc
 DESTINATION         := /usr/local/Packages/$(PACKAGE_NAME)
@@ -11,7 +11,7 @@ REL_ERROR_OPTIONS   := -Weverything -Wunreachable-code -Wno-conversion
 DEB_FLAGS           := $(CFLAGS) -g -o0 $(DEB_ERROR_OPTIONS) $(LDFLAGS)
 SANITIZER           := -fsanitize=undefined -fsanitize=address
 REL_FLAGS           := $(CFLAGS) -ofast $(REL_ERROR_OPTIONS) $(LDFLAGS)
-BUILD_LIB           := $(BUILD_DIR)/libMPEGTS
+BUILD_LIB           := $(BUILD_DIR)/libMPEG2Stream
 
 .PHONY: all check distclean CheckVer release debug test install clean uninstall
 
@@ -23,29 +23,31 @@ distclean: clean
 	$(clean)
 CheckVer:
 	$(shell echo ${VERSION})
-release: $(CURDIR)/libMPEGTS/src/DemuxMPEGTS.c
+release: $(CURDIR)/libMPEG2Stream/src/DemuxMPEG2Stream.c
 	mkdir -p   $(BUILD_DIR)
 	mkdir -p   $(BUILD_LIB)
-	$(CC)      $(REL_FLAGS) -c $(CURDIR)/libMPEGTS/src/DemuxMPEGTS.c -o $(BUILD_LIB)/DemuxMPEGTS.o
-	ar -crsu   $(BUILD_LIB)/libMPEGTS.a $(BUILD_LIB)/*.o
-	ranlib -sf $(BUILD_LIB)/libMPEGTS.a
-	strip	   $(BUILD_LIB)/libMPEGTS.a
-debug: $(CURDIR)/libMPEGTS/src/DemuxMPEGTS.c
+	$(CC)      $(REL_FLAGS) -c $(CURDIR)/libMPEG2Stream/src/DemuxMPEG2Stream.c -o $(BUILD_LIB)/DemuxMPEG2Stream.o
+	$(CC)      $(REL_FLAGS) -c $(CURDIR)/libMPEG2Stream/src/MuxMPEG2Stream.c -o $(BUILD_LIB)/MuxMPEG2Stream.o
+	ar -crsu   $(BUILD_LIB)/libMPEG2Stream.a $(BUILD_LIB)/*.o
+	ranlib -sf $(BUILD_LIB)/libMPEG2Stream.a
+	strip	   $(BUILD_LIB)/libMPEG2Stream.a
+debug: $(CURDIR)/libMPEG2Stream/src/DemuxMPEG2Stream.c
 	mkdir -p   $(BUILD_DIR)
 	mkdir -p   $(BUILD_LIB)
-	$(CC)      $(DEB_FLAGS) -c $(CURDIR)/libMPEGTS/src/DemuxMPEGTS.c -o $(BUILD_LIB)/DemuxMPEGTS.o
-	ar -crsu   $(BUILD_LIB)/libMPEGTS.a $(BUILD_LIB)/*.o
-	ranlib -sf $(BUILD_LIB)/libMPEGTS.a
+	$(CC)      $(DEB_FLAGS) -c $(CURDIR)/libMPEG2Stream/src/DemuxMPEG2Stream.c -o $(BUILD_LIB)/DemuxMPEG2Stream.o
+	$(CC)      $(DEB_FLAGS) -c $(CURDIR)/libMPEG2Stream/src/MuxMPEG2Stream.c -o $(BUILD_LIB)/MuxMPEG2Stream.o
+	ar -crsu   $(BUILD_LIB)/libMPEG2Stream.a $(BUILD_LIB)/*.o
+	ranlib -sf $(BUILD_LIB)/libMPEG2Stream.a
 install:
 	install -d -m 777 $(DESTINATION)/lib
 	install -d -m 777 $(DESTINATION)/include
-	install -C -v -m 444 $(BUILD_LIB)/libMPEGTS.a $(DESTINATION)/lib/libMPEGTS.a
-	install -C -v -m 444 $(CURDIR)/libMPEGTS/include/libMPEGTS.h $(DESTINATION)/include/libMPEGTS.h
-	install -C -v -m 444 (CURDIR)/libMPEGTS.pc /usr/share/pkgconfig/libMPEGTS.pc
+	install -C -v -m 444 $(BUILD_LIB)/libMPEG2Stream.a $(DESTINATION)/lib/libMPEG2Stream.a
+	install -C -v -m 444 $(CURDIR)/libMPEG2Stream/include/libMPEG2Stream.h $(DESTINATION)/include/libMPEG2Stream.h
+	install -C -v -m 444 (CURDIR)/libMPEG2Stream.pc /usr/share/pkgconfig/libMPEG2Stream.pc
 clean:
 	cd $(BUILD_LIB)/
-	rm -f -v -r DemuxMPEGTS.o
-	rm -f -v -r libMPEGTS.a
+	rm -f -v -r *.o
+	rm -f -v -r libMPEG2Stream.a
 	rm -f -v -r .DS_Store
 	rm -f -v -r Thumbs.db
 	rm -f -v -r desktop.ini

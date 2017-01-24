@@ -1,0 +1,311 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2C4C54241E3760A500F71507 /* DemuxMPEG2Stream.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C54101E375FD600F71507 /* DemuxMPEG2Stream.c */; };
+		2C4C54251E3760A500F71507 /* MuxMPEG2Stream.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C54111E375FD600F71507 /* MuxMPEG2Stream.c */; };
+		2C4C54281E3760C200F71507 /* libBitIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C4C54271E3760C200F71507 /* libBitIO.a */; };
+		2C4C54291E3760CF00F71507 /* libMPEG2Stream.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C4C540C1E375FC700F71507 /* libMPEG2Stream.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2C4C542A1E3760CF00F71507 /* libMPEG2StreamTables.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C4C540D1E375FC700F71507 /* libMPEG2StreamTables.h */; settings = {ATTRIBUTES = (Private, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2C4C540C1E375FC700F71507 /* libMPEG2Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libMPEG2Stream.h; path = libMPEG2Stream/include/libMPEG2Stream.h; sourceTree = "<group>"; };
+		2C4C540D1E375FC700F71507 /* libMPEG2StreamTables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libMPEG2StreamTables.h; path = libMPEG2Stream/include/libMPEG2StreamTables.h; sourceTree = "<group>"; };
+		2C4C54101E375FD600F71507 /* DemuxMPEG2Stream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = DemuxMPEG2Stream.c; path = libMPEG2Stream/src/DemuxMPEG2Stream.c; sourceTree = "<group>"; };
+		2C4C54111E375FD600F71507 /* MuxMPEG2Stream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = MuxMPEG2Stream.c; path = libMPEG2Stream/src/MuxMPEG2Stream.c; sourceTree = "<group>"; };
+		2C4C54201E37608000F71507 /* libMPEG2Stream.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMPEG2Stream.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C4C54271E3760C200F71507 /* libBitIO.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBitIO.a; path = ../../../../../usr/local/Packages/libBitIO/lib/libBitIO.a; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2C4C541D1E37608000F71507 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C4C54281E3760C200F71507 /* libBitIO.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2C09AAF11E2C37850050540F = {
+			isa = PBXGroup;
+			children = (
+				2C09AB011E2C378A0050540F /* MPEG2Stream */,
+				2C09AAFB1E2C37850050540F /* Products */,
+				2C4C54261E3760C200F71507 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		2C09AAFB1E2C37850050540F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2C4C54201E37608000F71507 /* libMPEG2Stream.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2C09AB011E2C378A0050540F /* MPEG2Stream */ = {
+			isa = PBXGroup;
+			children = (
+				2C09AB031E2C379F0050540F /* Headers */,
+				2C09AB021E2C37990050540F /* Source */,
+			);
+			name = MPEG2Stream;
+			sourceTree = "<group>";
+		};
+		2C09AB021E2C37990050540F /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				2C4C54101E375FD600F71507 /* DemuxMPEG2Stream.c */,
+				2C4C54111E375FD600F71507 /* MuxMPEG2Stream.c */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		2C09AB031E2C379F0050540F /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				2C4C540C1E375FC700F71507 /* libMPEG2Stream.h */,
+				2C4C540D1E375FC700F71507 /* libMPEG2StreamTables.h */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+		2C4C54261E3760C200F71507 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2C4C54271E3760C200F71507 /* libBitIO.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		2C4C541E1E37608000F71507 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C4C54291E3760CF00F71507 /* libMPEG2Stream.h in Headers */,
+				2C4C542A1E3760CF00F71507 /* libMPEG2StreamTables.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		2C4C541F1E37608000F71507 /* libMPEG2Stream */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C4C54211E37608000F71507 /* Build configuration list for PBXNativeTarget "libMPEG2Stream" */;
+			buildPhases = (
+				2C4C541C1E37608000F71507 /* Sources */,
+				2C4C541D1E37608000F71507 /* Frameworks */,
+				2C4C541E1E37608000F71507 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = libMPEG2Stream;
+			productName = libMPEG2Stream;
+			productReference = 2C4C54201E37608000F71507 /* libMPEG2Stream.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2C09AAF21E2C37850050540F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Marcus Johnson";
+				TargetAttributes = {
+					2C4C541F1E37608000F71507 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 628J9L7WK5;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 2C09AAF51E2C37850050540F /* Build configuration list for PBXProject "libMPEG2Stream" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2C09AAF11E2C37850050540F;
+			productRefGroup = 2C09AAFB1E2C37850050540F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2C4C541F1E37608000F71507 /* libMPEG2Stream */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2C4C541C1E37608000F71507 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C4C54241E3760A500F71507 /* DemuxMPEG2Stream.c in Sources */,
+				2C4C54251E3760A500F71507 /* MuxMPEG2Stream.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2C09AAFC1E2C37850050540F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = c11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LLVM_LTO = YES_THIN;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		2C09AAFD1E2C37850050540F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = c11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = fast;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LLVM_LTO = YES_THIN;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		2C4C54221E37608000F71507 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 628J9L7WK5;
+				EXECUTABLE_PREFIX = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Packages/libBitIO/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2C4C54231E37608000F71507 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 628J9L7WK5;
+				EXECUTABLE_PREFIX = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Packages/libBitIO/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2C09AAF51E2C37850050540F /* Build configuration list for PBXProject "libMPEG2Stream" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C09AAFC1E2C37850050540F /* Debug */,
+				2C09AAFD1E2C37850050540F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C4C54211E37608000F71507 /* Build configuration list for PBXNativeTarget "libMPEG2Stream" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C4C54221E37608000F71507 /* Debug */,
+				2C4C54231E37608000F71507 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2C09AAF21E2C37850050540F /* Project object */;
+}

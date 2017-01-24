@@ -1,4 +1,4 @@
-#include "../include/libMPEGTS.h"
+#include "../include/libMPEG2Stream.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -18,11 +18,19 @@ extern "C" {
         uint8_t *PacketData;
     } Packet2Mux;
     
-    void MuxMPEGTransportStream(BitInput *BitO, Packet2Mux *Packet) { // Main, user facing function
+    void MuxMPEG2PESPacket(BitInput *BitO, Packet2Mux *Packet) {
         
     }
     
-    void SpliceMPEGTransportStream(BitInput *BitO, Packet2Mux *Packet) {
+    void MuxMPEG2ProgramStream(BitInput *BitO, Packet2Mux *Packet) {
+        
+    }
+    
+    void MuxMPEG2TransportStream(BitInput *BitO, Packet2Mux *Packet) {
+        
+    }
+    
+    void SpliceMPEG2TransportStream(BitInput *BitO, Packet2Mux *Packet) {
         
     }
     
