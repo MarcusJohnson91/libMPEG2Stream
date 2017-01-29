@@ -18,6 +18,7 @@ extern "C" {
     // Transport Streams CAN CONTAIN PROGRAM STREAMS, OR ELEMENTARY STREAMS.
     
     // So, for Demuxing, the general idea is to accumulate PES packets until you've got a whole NAL or whateve?
+    // Also, we need a way to identify the stream type
     
     extern enum MPEGTSConstants {
         MPEGStartCode               = 0x000001, // Both Program Stream and Transport Stream
@@ -519,11 +520,11 @@ extern "C" {
         }
     }
     
-    void DemuxMPEG2PESPackets(BitInput *BitI, MPEG2TransportStream *Stream) {
+    void DemuxMPEG2PESPackets(BitInput *BitI, PacketizedElementaryStream *PESPacket) {
         
     }
     
-    void DemuxMPEG2ProgramStream(BitInput *BitI, MPEG2TransportStream *Stream) {
+    void DemuxMPEG2ProgramStream(BitInput *BitI, MPEG2ProgramStream *Stream) {
         
     }
     
