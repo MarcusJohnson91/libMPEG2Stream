@@ -1,0 +1,3 @@
+[submodule "Dependencies/BitIO"]
+	path = Dependencies/BitIO
+	url = https://github.com/bumblebritches57/BitIO
