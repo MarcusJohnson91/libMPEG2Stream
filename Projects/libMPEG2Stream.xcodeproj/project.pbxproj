@@ -7,20 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C4C54241E3760A500F71507 /* DemuxMPEG2Stream.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C54101E375FD600F71507 /* DemuxMPEG2Stream.c */; };
-		2C4C54251E3760A500F71507 /* MuxMPEG2Stream.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C4C54111E375FD600F71507 /* MuxMPEG2Stream.c */; };
 		2C4C54281E3760C200F71507 /* libBitIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C4C54271E3760C200F71507 /* libBitIO.a */; };
-		2C4C54291E3760CF00F71507 /* libMPEG2Stream.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C4C540C1E375FC700F71507 /* libMPEG2Stream.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2C4C542A1E3760CF00F71507 /* libMPEG2StreamTables.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C4C540D1E375FC700F71507 /* libMPEG2StreamTables.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		2C719ACB1E84114000EB6ECA /* libMPEG2Stream.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C719AC81E84114000EB6ECA /* libMPEG2Stream.h */; };
+		2C719ACC1E84114000EB6ECA /* libMPEG2StreamTables.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C719AC91E84114000EB6ECA /* libMPEG2StreamTables.h */; };
+		2C719ACD1E84114000EB6ECA /* MPEG2StreamTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C719ACA1E84114000EB6ECA /* MPEG2StreamTypes.h */; };
+		2C719ACF1E84114F00EB6ECA /* DemuxMPEG2Stream.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C719ACE1E84114F00EB6ECA /* DemuxMPEG2Stream.h */; };
+		2C719AD11E84115B00EB6ECA /* MuxMPEG2Stream.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C719AD01E84115B00EB6ECA /* MuxMPEG2Stream.h */; };
+		2C719AD31E84117000EB6ECA /* DemuxMPEG2Stream.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C719AD21E84117000EB6ECA /* DemuxMPEG2Stream.c */; };
+		2C719AD51E84117800EB6ECA /* MuxMPEG2Stream.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C719AD41E84117800EB6ECA /* MuxMPEG2Stream.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2C4C540C1E375FC700F71507 /* libMPEG2Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libMPEG2Stream.h; path = libMPEG2Stream/include/libMPEG2Stream.h; sourceTree = "<group>"; };
-		2C4C540D1E375FC700F71507 /* libMPEG2StreamTables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libMPEG2StreamTables.h; path = libMPEG2Stream/include/libMPEG2StreamTables.h; sourceTree = "<group>"; };
-		2C4C54101E375FD600F71507 /* DemuxMPEG2Stream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = DemuxMPEG2Stream.c; path = libMPEG2Stream/src/DemuxMPEG2Stream.c; sourceTree = "<group>"; };
-		2C4C54111E375FD600F71507 /* MuxMPEG2Stream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = MuxMPEG2Stream.c; path = libMPEG2Stream/src/MuxMPEG2Stream.c; sourceTree = "<group>"; };
 		2C4C54201E37608000F71507 /* libMPEG2Stream.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMPEG2Stream.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C4C54271E3760C200F71507 /* libBitIO.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBitIO.a; path = ../../../../../usr/local/Packages/libBitIO/lib/libBitIO.a; sourceTree = "<group>"; };
+		2C719AC81E84114000EB6ECA /* libMPEG2Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libMPEG2Stream.h; path = ../libMPEG2Stream/include/libMPEG2Stream.h; sourceTree = "<group>"; };
+		2C719AC91E84114000EB6ECA /* libMPEG2StreamTables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libMPEG2StreamTables.h; path = ../libMPEG2Stream/include/libMPEG2StreamTables.h; sourceTree = "<group>"; };
+		2C719ACA1E84114000EB6ECA /* MPEG2StreamTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MPEG2StreamTypes.h; path = ../libMPEG2Stream/include/MPEG2StreamTypes.h; sourceTree = "<group>"; };
+		2C719ACE1E84114F00EB6ECA /* DemuxMPEG2Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemuxMPEG2Stream.h; path = ../libMPEG2Stream/include/Demuxer/DemuxMPEG2Stream.h; sourceTree = "<group>"; };
+		2C719AD01E84115B00EB6ECA /* MuxMPEG2Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MuxMPEG2Stream.h; path = ../libMPEG2Stream/include/Muxer/MuxMPEG2Stream.h; sourceTree = "<group>"; };
+		2C719AD21E84117000EB6ECA /* DemuxMPEG2Stream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = DemuxMPEG2Stream.c; path = ../libMPEG2Stream/src/Demuxer/DemuxMPEG2Stream.c; sourceTree = "<group>"; };
+		2C719AD41E84117800EB6ECA /* MuxMPEG2Stream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = MuxMPEG2Stream.c; path = ../libMPEG2Stream/src/Muxer/MuxMPEG2Stream.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,8 +70,8 @@
 		2C09AB021E2C37990050540F /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				2C4C54101E375FD600F71507 /* DemuxMPEG2Stream.c */,
-				2C4C54111E375FD600F71507 /* MuxMPEG2Stream.c */,
+				2C719AC41E840FA000EB6ECA /* Demuxer */,
+				2C719AC51E840FA700EB6ECA /* Muxer */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -73,8 +79,11 @@
 		2C09AB031E2C379F0050540F /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				2C4C540C1E375FC700F71507 /* libMPEG2Stream.h */,
-				2C4C540D1E375FC700F71507 /* libMPEG2StreamTables.h */,
+				2C719AC31E840F8D00EB6ECA /* Demuxer */,
+				2C719AC21E840F8500EB6ECA /* Muxer */,
+				2C719AC81E84114000EB6ECA /* libMPEG2Stream.h */,
+				2C719AC91E84114000EB6ECA /* libMPEG2StreamTables.h */,
+				2C719ACA1E84114000EB6ECA /* MPEG2StreamTypes.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -87,6 +96,38 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2C719AC21E840F8500EB6ECA /* Muxer */ = {
+			isa = PBXGroup;
+			children = (
+				2C719AD01E84115B00EB6ECA /* MuxMPEG2Stream.h */,
+			);
+			name = Muxer;
+			sourceTree = "<group>";
+		};
+		2C719AC31E840F8D00EB6ECA /* Demuxer */ = {
+			isa = PBXGroup;
+			children = (
+				2C719ACE1E84114F00EB6ECA /* DemuxMPEG2Stream.h */,
+			);
+			name = Demuxer;
+			sourceTree = "<group>";
+		};
+		2C719AC41E840FA000EB6ECA /* Demuxer */ = {
+			isa = PBXGroup;
+			children = (
+				2C719AD21E84117000EB6ECA /* DemuxMPEG2Stream.c */,
+			);
+			name = Demuxer;
+			sourceTree = "<group>";
+		};
+		2C719AC51E840FA700EB6ECA /* Muxer */ = {
+			isa = PBXGroup;
+			children = (
+				2C719AD41E84117800EB6ECA /* MuxMPEG2Stream.c */,
+			);
+			name = Muxer;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -94,8 +135,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C4C54291E3760CF00F71507 /* libMPEG2Stream.h in Headers */,
-				2C4C542A1E3760CF00F71507 /* libMPEG2StreamTables.h in Headers */,
+				2C719ACC1E84114000EB6ECA /* libMPEG2StreamTables.h in Headers */,
+				2C719ACD1E84114000EB6ECA /* MPEG2StreamTypes.h in Headers */,
+				2C719AD11E84115B00EB6ECA /* MuxMPEG2Stream.h in Headers */,
+				2C719ACF1E84114F00EB6ECA /* DemuxMPEG2Stream.h in Headers */,
+				2C719ACB1E84114000EB6ECA /* libMPEG2Stream.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,8 +201,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C4C54241E3760A500F71507 /* DemuxMPEG2Stream.c in Sources */,
-				2C4C54251E3760A500F71507 /* MuxMPEG2Stream.c in Sources */,
+				2C719AD51E84117800EB6ECA /* MuxMPEG2Stream.c in Sources */,
+				2C719AD31E84117000EB6ECA /* DemuxMPEG2Stream.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,10 +230,11 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 628J9L7WK5;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c11;
@@ -235,10 +280,11 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 628J9L7WK5;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = c11;
@@ -304,6 +350,7 @@
 				2C4C54231E37608000F71507 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

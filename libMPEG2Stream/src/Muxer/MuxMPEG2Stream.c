@@ -1,22 +1,11 @@
-#include "../include/libMPEG2Stream.h"
+#include "../../../Dependencies/BitIO/libBitIO/include/BitIO.h"
+#include "../../include/libMPEG2Stream.h"
+#include "../../include/MPEG2StreamTypes.h"
+#include "../../include/Muxer/MuxMPEG2Stream.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-    
-    enum PacketTypes {
-        TrueHD = 0,
-        DTSXLL = 1,
-        AVC    = 2,
-    };
-    
-    typedef struct Packet2Mux {
-        uint8_t  PacketType;
-        bool     IsSubstream;
-        uint64_t DisplayTime;
-        size_t   PacketSize;
-        uint8_t *PacketData;
-    } Packet2Mux;
     
     void MuxMPEG2PESPacket(BitInput *BitO, Packet2Mux *Packet) {
         

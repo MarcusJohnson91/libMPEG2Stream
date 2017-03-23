@@ -23,19 +23,19 @@ distclean: clean
 	$(clean)
 CheckVer:
 	$(shell echo ${VERSION})
-release: $(CURDIR)/libMPEG2Stream/src/DemuxMPEG2Stream.c
+release: $(CURDIR)/libMPEG2Stream/src/Demuxer/DemuxMPEG2Stream.c
 	mkdir -p   $(BUILD_DIR)
 	mkdir -p   $(BUILD_LIB)
-	$(CC)      $(REL_FLAGS) -c $(CURDIR)/libMPEG2Stream/src/DemuxMPEG2Stream.c -o $(BUILD_LIB)/DemuxMPEG2Stream.o
-	$(CC)      $(REL_FLAGS) -c $(CURDIR)/libMPEG2Stream/src/MuxMPEG2Stream.c -o $(BUILD_LIB)/MuxMPEG2Stream.o
+	$(CC)      $(REL_FLAGS) -c $(CURDIR)/libMPEG2Stream/src/Demuxer/DemuxMPEG2Stream.c -o $(BUILD_LIB)/DemuxMPEG2Stream.o
+	$(CC)      $(REL_FLAGS) -c $(CURDIR)/libMPEG2Stream/src/Muxer/MuxMPEG2Stream.c -o $(BUILD_LIB)/MuxMPEG2Stream.o
 	ar -crsu   $(BUILD_LIB)/libMPEG2Stream.a $(BUILD_LIB)/*.o
 	ranlib -sf $(BUILD_LIB)/libMPEG2Stream.a
 	strip	   $(BUILD_LIB)/libMPEG2Stream.a
-debug: $(CURDIR)/libMPEG2Stream/src/DemuxMPEG2Stream.c
+debug: $(CURDIR)/libMPEG2Stream/src/Demuxer/DemuxMPEG2Stream.c
 	mkdir -p   $(BUILD_DIR)
 	mkdir -p   $(BUILD_LIB)
-	$(CC)      $(DEB_FLAGS) -c $(CURDIR)/libMPEG2Stream/src/DemuxMPEG2Stream.c -o $(BUILD_LIB)/DemuxMPEG2Stream.o
-	$(CC)      $(DEB_FLAGS) -c $(CURDIR)/libMPEG2Stream/src/MuxMPEG2Stream.c -o $(BUILD_LIB)/MuxMPEG2Stream.o
+	$(CC)      $(DEB_FLAGS) -c $(CURDIR)/libMPEG2Stream/src/Demuxer/DemuxMPEG2Stream.c -o $(BUILD_LIB)/DemuxMPEG2Stream.o
+	$(CC)      $(DEB_FLAGS) -c $(CURDIR)/libMPEG2Stream/src/Muxer/MuxMPEG2Stream.c -o $(BUILD_LIB)/MuxMPEG2Stream.o
 	ar -crsu   $(BUILD_LIB)/libMPEG2Stream.a $(BUILD_LIB)/*.o
 	ranlib -sf $(BUILD_LIB)/libMPEG2Stream.a
 install:
