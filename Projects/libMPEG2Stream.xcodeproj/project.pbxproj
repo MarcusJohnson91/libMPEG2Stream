@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C4C54281E3760C200F71507 /* libBitIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C4C54271E3760C200F71507 /* libBitIO.a */; };
+		2C03FC751E850B420075BA8C /* libBitIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C03FC741E850B260075BA8C /* libBitIO.a */; };
 		2C719ACB1E84114000EB6ECA /* libMPEG2Stream.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C719AC81E84114000EB6ECA /* libMPEG2Stream.h */; };
 		2C719ACC1E84114000EB6ECA /* libMPEG2StreamTables.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C719AC91E84114000EB6ECA /* libMPEG2StreamTables.h */; };
 		2C719ACD1E84114000EB6ECA /* MPEG2StreamTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C719ACA1E84114000EB6ECA /* MPEG2StreamTypes.h */; };
@@ -17,9 +17,26 @@
 		2C719AD51E84117800EB6ECA /* MuxMPEG2Stream.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C719AD41E84117800EB6ECA /* MuxMPEG2Stream.c */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		2C03FC711E850B260075BA8C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C03FC6C1E850B260075BA8C /* BitIO.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2C419FC71E5B001E00FC804F;
+			remoteInfo = "Test-BitIO";
+		};
+		2C03FC731E850B260075BA8C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C03FC6C1E850B260075BA8C /* BitIO.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2C419FD51E5B00CC00FC804F;
+			remoteInfo = libBitIO;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		2C03FC6C1E850B260075BA8C /* BitIO.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BitIO.xcodeproj; path = ../Dependencies/BitIO/Projects/BitIO.xcodeproj; sourceTree = "<group>"; };
 		2C4C54201E37608000F71507 /* libMPEG2Stream.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMPEG2Stream.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C4C54271E3760C200F71507 /* libBitIO.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBitIO.a; path = ../../../../../usr/local/Packages/libBitIO/lib/libBitIO.a; sourceTree = "<group>"; };
 		2C719AC81E84114000EB6ECA /* libMPEG2Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libMPEG2Stream.h; path = ../libMPEG2Stream/include/libMPEG2Stream.h; sourceTree = "<group>"; };
 		2C719AC91E84114000EB6ECA /* libMPEG2StreamTables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libMPEG2StreamTables.h; path = ../libMPEG2Stream/include/libMPEG2StreamTables.h; sourceTree = "<group>"; };
 		2C719ACA1E84114000EB6ECA /* MPEG2StreamTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MPEG2StreamTypes.h; path = ../libMPEG2Stream/include/MPEG2StreamTypes.h; sourceTree = "<group>"; };
@@ -34,19 +51,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C4C54281E3760C200F71507 /* libBitIO.a in Frameworks */,
+				2C03FC751E850B420075BA8C /* libBitIO.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C03FC6B1E850AE70075BA8C /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				2C03FC6C1E850B260075BA8C /* BitIO.xcodeproj */,
+			);
+			name = Dependencies;
+			sourceTree = "<group>";
+		};
+		2C03FC6D1E850B260075BA8C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2C03FC721E850B260075BA8C /* Test-BitIO */,
+				2C03FC741E850B260075BA8C /* libBitIO.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2C09AAF11E2C37850050540F = {
 			isa = PBXGroup;
 			children = (
+				2C03FC6B1E850AE70075BA8C /* Dependencies */,
 				2C09AB011E2C378A0050540F /* MPEG2Stream */,
 				2C09AAFB1E2C37850050540F /* Products */,
-				2C4C54261E3760C200F71507 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,14 +120,6 @@
 				2C719ACA1E84114000EB6ECA /* MPEG2StreamTypes.h */,
 			);
 			name = Headers;
-			sourceTree = "<group>";
-		};
-		2C4C54261E3760C200F71507 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				2C4C54271E3760C200F71507 /* libBitIO.a */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		2C719AC21E840F8500EB6ECA /* Muxer */ = {
@@ -189,12 +215,35 @@
 			mainGroup = 2C09AAF11E2C37850050540F;
 			productRefGroup = 2C09AAFB1E2C37850050540F /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 2C03FC6D1E850B260075BA8C /* Products */;
+					ProjectRef = 2C03FC6C1E850B260075BA8C /* BitIO.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				2C4C541F1E37608000F71507 /* libMPEG2Stream */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		2C03FC721E850B260075BA8C /* Test-BitIO */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = "Test-BitIO";
+			remoteRef = 2C03FC711E850B260075BA8C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2C03FC741E850B260075BA8C /* libBitIO.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libBitIO.a;
+			remoteRef = 2C03FC731E850B260075BA8C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2C4C541C1E37608000F71507 /* Sources */ = {
@@ -230,7 +279,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -280,7 +329,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -306,6 +355,7 @@
 		2C4C54221E37608000F71507 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 628J9L7WK5;
 				EXECUTABLE_PREFIX = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -320,6 +370,7 @@
 		2C4C54231E37608000F71507 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 628J9L7WK5;
 				EXECUTABLE_PREFIX = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
