@@ -33,19 +33,19 @@ extern "C" {
 
 
     MPEG2TransportStream *InitMPEGTransportStream(void) {
-        MPEG2TransportStream *TransportStream                 = calloc(sizeof(MPEG2TransportStream), 1);
-        TransportStream->Packet                               = calloc(sizeof(TransportStreamPacket), 1);
-        TransportStream->Adaptation                           = calloc(sizeof(TSAdaptationField), 1);
-        TransportStream->PES                                  = calloc(sizeof(PacketizedElementaryStream), 1);
-        TransportStream->Program                              = calloc(sizeof(ProgramAssociatedSection), 1);
-        TransportStream->Condition                            = calloc(sizeof(ConditionalAccessSection), 1);
+        MPEG2TransportStream *TransportStream                 = calloc(1, sizeof(MPEG2TransportStream));
+        TransportStream->Packet                               = calloc(1, sizeof(TransportStreamPacket));
+        TransportStream->Adaptation                           = calloc(1, sizeof(TSAdaptationField));
+        TransportStream->PES                                  = calloc(1, sizeof(PacketizedElementaryStream));
+        TransportStream->Program                              = calloc(1, sizeof(ProgramAssociatedSection));
+        TransportStream->Condition                            = calloc(1, sizeof(ConditionalAccessSection));
         return TransportStream;
     }
 
     MPEG2ProgramStream *InitMPEGProgramStream(void) {
-        MPEG2ProgramStream *ProgramStream                     = calloc(sizeof(MPEG2ProgramStream), 1);
-        ProgramStream->PS                                     = calloc(sizeof(ProgramStream), 1);
-        ProgramStream->PES                                    = calloc(sizeof(PacketizedElementaryStream), 1);
+        MPEG2ProgramStream *ProgramStream                     = calloc(1, sizeof(MPEG2ProgramStream));
+        ProgramStream->PS                                     = calloc(1, sizeof(ProgramStream));
+        ProgramStream->PES                                    = calloc(1, sizeof(PacketizedElementaryStream));
         return ProgramStream;
     }
 
