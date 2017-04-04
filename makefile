@@ -4,7 +4,7 @@ VERSION             := $(shell cat ${FILE} | grep -e "@version")
 CC                  := cc
 DESTINATION         := /usr/local/Packages/$(PACKAGE_NAME)
 BUILD_DIR           := $(CURDIR)/BUILD
-CFLAGS              := -std=c11 -march=native -funroll-loops -lmath `pkg-config --libs libBitIO`
+CFLAGS              := -std=c11 -march=native -lmath -funroll-loops -ferror-limit=1024 -Wall -pedantic `pkg-config --libs libBitIO`
 LDFLAGS             := -flto=thin
 DEB_ERROR_OPTIONS   := -Wno-unused-parameter -Wno-unused-variable -Wno-int-conversion
 REL_ERROR_OPTIONS   := -Weverything -Wunreachable-code -Wno-conversion
