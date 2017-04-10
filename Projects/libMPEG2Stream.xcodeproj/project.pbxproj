@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C03FC751E850B420075BA8C /* libBitIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C03FC741E850B260075BA8C /* libBitIO.a */; };
+		2C6018A21E97702E00B112A9 /* libMPEG2Stream.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C6018A11E97702E00B112A9 /* libMPEG2Stream.c */; };
 		2C719ACB1E84114000EB6ECA /* libMPEG2Stream.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C719AC81E84114000EB6ECA /* libMPEG2Stream.h */; };
 		2C719ACC1E84114000EB6ECA /* libMPEG2StreamTables.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C719AC91E84114000EB6ECA /* libMPEG2StreamTables.h */; };
 		2C719ACD1E84114000EB6ECA /* MPEG2StreamTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C719ACA1E84114000EB6ECA /* MPEG2StreamTypes.h */; };
@@ -37,6 +38,7 @@
 /* Begin PBXFileReference section */
 		2C03FC6C1E850B260075BA8C /* BitIO.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BitIO.xcodeproj; path = ../Dependencies/BitIO/Projects/BitIO.xcodeproj; sourceTree = "<group>"; };
 		2C4C54201E37608000F71507 /* libMPEG2Stream.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMPEG2Stream.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C6018A11E97702E00B112A9 /* libMPEG2Stream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = libMPEG2Stream.c; path = ../libMPEG2Stream/src/libMPEG2Stream.c; sourceTree = "<group>"; };
 		2C719AC81E84114000EB6ECA /* libMPEG2Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libMPEG2Stream.h; path = ../libMPEG2Stream/include/libMPEG2Stream.h; sourceTree = "<group>"; };
 		2C719AC91E84114000EB6ECA /* libMPEG2StreamTables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libMPEG2StreamTables.h; path = ../libMPEG2Stream/include/libMPEG2StreamTables.h; sourceTree = "<group>"; };
 		2C719ACA1E84114000EB6ECA /* MPEG2StreamTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MPEG2StreamTypes.h; path = ../libMPEG2Stream/include/MPEG2StreamTypes.h; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 		2C09AB021E2C37990050540F /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				2C6018A11E97702E00B112A9 /* libMPEG2Stream.c */,
 				2C719AC41E840FA000EB6ECA /* Demuxer */,
 				2C719AC51E840FA700EB6ECA /* Muxer */,
 			);
@@ -251,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C719AD51E84117800EB6ECA /* MuxMPEG2Stream.c in Sources */,
+				2C6018A21E97702E00B112A9 /* libMPEG2Stream.c in Sources */,
 				2C719AD31E84117000EB6ECA /* DemuxMPEG2Stream.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

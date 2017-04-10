@@ -9,7 +9,7 @@
 extern "C" {
 #endif
     
-    struct ProgramStream { // Can be the most basic level as well as the TransportStream
+    typedef struct ProgramStreamPacket { // Can be the most basic level as well as the TransportStream
         uint8_t   PackStartCode;                        // pack_start_code
         uint8_t   SystemClockRefBase1:3;                // system_clock_reference_base [32..30]
         uint16_t  SystemClockRefBase2:15;               // system_clock_reference_base [29..15]
@@ -18,9 +18,20 @@ extern "C" {
         uint16_t  SystemClockRefExtension:9;            // system_clock_reference_extension
         uint32_t  ProgramMuxRate:22;                    // program_mux_rate
         uint8_t   PackStuffingSize:3;                   // pack_stuffing_length
-    };
+    } ProgramStreamPacket;
     
-    struct PacketizedElementaryStream { // This is contains the actual video and audio streams, it differs from them by offering a very thin layer on top to split the NALs and SliceGroups into packets.
+    typedef struct TransportStreamPacket {
+        int8_t    SyncByte;                            // sync_byte
+        bool      TransportErrorIndicator:1;           // transport_error_indicator
+        bool      StartOfPayloadIndicator:1;           // payload_unit_start_indicator
+        bool      TransportPriorityIndicator:1;        // transport_priority
+        uint16_t  PID:13;                              // PID
+        int8_t    TransportScramblingControl:2;        // transport_scrambling_control
+        int8_t    AdaptationFieldControl:2;            // adaptation_field_control
+        uint8_t   ContinuityCounter:4;                 // continuity_counter
+    } TransportStreamPacket;
+    
+    typedef struct PacketizedElementaryStream { // This is contains the actual video and audio streams, it differs from them by offering a very thin layer on top to split the NALs and SliceGroups into packets.
         int32_t   PacketStartCodePrefix:24;            // packet_start_code_prefix
         uint8_t   StreamID;                            // stream_id
         uint16_t  PESPacketSize;                       // PES_packet_length
@@ -64,9 +75,9 @@ extern "C" {
         uint8_t   StreamIDExtension:7;                 // stream_id_extension
         bool      TREFFieldPresentFlag:1;              // tref_extension_flag
         uint64_t  TREF:33;                             // TREF
-    };
+    } PacketizedElementaryStream;
     
-    struct ConditionalAccessSection {
+    typedef struct ConditionalAccessSection {
         uint8_t   TableID;                             // table_id
         bool      SectionSyntaxIndicator:1;            // section_syntax_indicator
         uint16_t  SectionSize:12;                      // section_length
@@ -75,9 +86,9 @@ extern "C" {
         uint8_t   SectionNumber;                       // section_number
         uint8_t   LastSectionNumber;                   // last_section_number
         uint32_t  ConditionCRC32;                      // CRC_32
-    };
+    } ConditionalAccessSection;
     
-    struct ProgramAssociatedSection {
+    typedef struct ProgramAssociatedSection {
         uint8_t   TableID;                             // table_id
         bool      SectionSyntaxIndicator:1;            // section_syntax_indicator
         uint16_t  SectionSize:12;                      // section_length
@@ -90,20 +101,9 @@ extern "C" {
         uint16_t  NetworkPID:13;                       // network_PID
         uint16_t  ProgramMapPID:13;                    // program_map_PID
         uint32_t  ProgramCRC32;                        // CRC_32
-    };
+    } ProgramAssociatedSection;
     
-    struct TransportStreamPacket {
-        int8_t    SyncByte;                            // sync_byte
-        bool      TransportErrorIndicator:1;           // transport_error_indicator
-        bool      StartOfPayloadIndicator:1;           // payload_unit_start_indicator
-        bool      TransportPriorityIndicator:1;        // transport_priority
-        uint16_t  PID:13;                              // PID
-        int8_t    TransportScramblingControl:2;        // transport_scrambling_control
-        int8_t    AdaptationFieldControl:2;            // adaptation_field_control
-        uint8_t   ContinuityCounter:4;                 // continuity_counter
-    };
-    
-    struct TSAdaptationField {
+    typedef struct TSAdaptationField {
         uint8_t   AdaptationFieldSize;                 // adaptation_field_length
         bool      DiscontinuityIndicator:1;            // discontinuity_indicator
         bool      RandomAccessIndicator:1;             // random_access_indicator
@@ -129,28 +129,28 @@ extern "C" {
         uint32_t  PiecewiseRate:22;                    // piecewise_rate
         uint8_t   SpliceType:4;                        // Splice_type
         uint64_t  DecodeTimeStampNextAU:33;            // DTS_next_AU
-    };
+    } TSAdaptationField;
     
-    struct MPEG2TransportStream {
+    typedef struct MPEG2TransportStream {
         TransportStreamPacket      *Packet;
         TSAdaptationField          *Adaptation;
         PacketizedElementaryStream *PES;
         ProgramAssociatedSection   *Program;
         ConditionalAccessSection   *Condition;
-    };
+    } MPEG2TransportStream;
     
-    struct MPEG2ProgramStream {
-        ProgramStream              *PS;
+    typedef struct MPEG2ProgramStream {
+        ProgramStreamPacket        *PSP;
         PacketizedElementaryStream *PES;
-    };
+    } MPEG2ProgramStream;
     
-    struct Packet2Mux {
+    typedef struct Packet2Mux {
         uint8_t  PacketType;
         bool     IsSubstream;
         uint64_t DisplayTime;
         size_t   PacketSize;
         uint8_t *PacketData;
-    };
+    } Packet2Mux;
     
 #ifdef __cplusplus
 }
