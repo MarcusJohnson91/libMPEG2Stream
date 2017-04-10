@@ -212,7 +212,7 @@ extern "C" {
                 Stream->PESPrivateDataFlag           = ReadBits(BitI, 1, true);
                 Stream->PackHeaderFieldFlag          = ReadBits(BitI, 1, true);
                 Stream->ProgramPacketSeqCounterFlag  = ReadBits(BitI, 1, true);
-                Stream->PSPTDBufferFlag              = ReadBits(BitI, 1, true);
+                Stream->PSTDBufferFlag               = ReadBits(BitI, 1, true);
                 Stream->PESExtensionFlag2            = ReadBits(BitI, 1, true);
                 if (Stream->PESPrivateDataFlag == true) {
                     SkipBits(BitI, 128);
@@ -228,10 +228,10 @@ extern "C" {
                     Stream->MPEGVersionIdentifier    = ReadBits(BitI, 1, true);
                     Stream->OriginalStuffSize        = ReadBits(BitI, 6, true);
                 }
-                if (Stream->PSPTDBufferFlag == true) {
+                if (Stream->PSTDBufferFlag == true) {
                     SkipBits(BitI, 2);
-                    Stream->PSPTDBufferScale         = ReadBits(BitI, 1, true);
-                    Stream->PSPTDBufferSize          = ReadBits(BitI, 13, true);
+                    Stream->PSTDBufferScale         = ReadBits(BitI, 1, true);
+                    Stream->PSTDBufferSize          = ReadBits(BitI, 13, true);
                 }
                 if (Stream->PESExtensionFlag2 == true) {
                     SkipBits(BitI, 1);
