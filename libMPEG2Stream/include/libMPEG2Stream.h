@@ -26,6 +26,14 @@ extern "C" {
         PESPacketCRCPolynomial             = 0x8811,
     };
     
+    enum MPEG2StreamSourcePacketSize {
+        MPEG2TransportStreamPacketSize       = 188,
+        MPEG2TransportStreamBlurayPacketSize = 192,
+        MPEG2TransportStreamISDBPacketSize   = 204,
+        MPEG2TransportStreamDVBPacketSize    = 204,
+        MPEG2TransportStreamATSCPacketSize   = 208,
+    };
+    
     enum TSPIDTable {
         ProgramAssociationTable            =    0,// Program association table
         ConditionalAccesTable              =    1,// Conditional access table
