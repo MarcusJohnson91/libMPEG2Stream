@@ -19,13 +19,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2C03FC711E850B260075BA8C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2C03FC6C1E850B260075BA8C /* BitIO.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2C419FC71E5B001E00FC804F;
-			remoteInfo = "Test-BitIO";
-		};
 		2C03FC731E850B260075BA8C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2C03FC6C1E850B260075BA8C /* BitIO.xcodeproj */;
@@ -71,7 +64,6 @@
 		2C03FC6D1E850B260075BA8C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2C03FC721E850B260075BA8C /* Test-BitIO */,
 				2C03FC741E850B260075BA8C /* libBitIO.a */,
 			);
 			name = Products;
@@ -232,13 +224,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		2C03FC721E850B260075BA8C /* Test-BitIO */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = "Test-BitIO";
-			remoteRef = 2C03FC711E850B260075BA8C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		2C03FC741E850B260075BA8C /* libBitIO.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -308,7 +293,18 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-fvectorize",
+					"-funroll-loops",
+					"-ferror-limit=1024",
+					"-Wall",
+					"-Wextra",
+					"-pedantic",
+					"-Weverything",
+				);
 				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos";
+				VALID_ARCHS = "arm64 x86_64";
 			};
 			name = Debug;
 		};
@@ -352,7 +348,18 @@
 				LLVM_LTO = YES_THIN;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CFLAGS = (
+					"-fvectorize",
+					"-funroll-loops",
+					"-ferror-limit=1024",
+					"-Wall",
+					"-Wextra",
+					"-pedantic",
+					"-Weverything",
+				);
 				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos";
+				VALID_ARCHS = "arm64 x86_64";
 			};
 			name = Release;
 		};
