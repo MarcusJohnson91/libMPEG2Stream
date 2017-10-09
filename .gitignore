@@ -1,18 +1,18 @@
 # Generic
 *.html
 *.htm
-/BUILD/*
+BUILD/
 
 # Mac stuff
 *.a
 *.o
 *.plist
 *.xcbkptlist
+*.xcuserdatad/
 *.xcuserstate
-*.xcuserdatad/*
+*.xcworkspace/
 .DS_Store
 ._*
-project.xcworkspace/
 xcuserdata/
 
 # Windows stuff
@@ -34,4 +34,4 @@ xcuserdata/
 *.sqlite
 *.suo
 *.tlog
-.vs/*
+.vs/
