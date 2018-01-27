@@ -117,14 +117,14 @@ extern "C" {
     /*!
      @abstract     Main Demuxing function
      */
-    void DemuxMPEGTransportStream(BitInput *BitI, MPEG2TransportStream *Stream);
+    void DemuxMPEGTransportStream(MPEG2TransportStream *Stream, BitBuffer *BitB);
     
     /*!
      @abstract     Main muxing function
      */
-    void MuxMPEGTransportStream(BitInput *BitO, Packet2Mux *Packet, uint64_t PacketType, uint64_t PacketLocale, uint64_t MainLocale);
+    void MuxMPEGTransportStream(BitBuffer *BitB, Packet2Mux *Packet, uint64_t PacketType, uint64_t PacketLocale, uint64_t MainLocale);
     
-    void MuxAVC2MPEGTransportStream(BitInput *BitO, Packet2Mux *Packet);
+    void MuxAVC2MPEGTransportStream(BitBuffer *BitB, Packet2Mux *Packet);
     
 #ifdef __cplusplus
 }

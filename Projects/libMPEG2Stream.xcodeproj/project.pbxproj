@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C03FC751E850B420075BA8C /* libBitIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C03FC741E850B260075BA8C /* libBitIO.a */; };
 		2C6018A21E97702E00B112A9 /* libMPEG2Stream.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C6018A11E97702E00B112A9 /* libMPEG2Stream.c */; };
 		2C719ACB1E84114000EB6ECA /* libMPEG2Stream.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C719AC81E84114000EB6ECA /* libMPEG2Stream.h */; };
 		2C719ACC1E84114000EB6ECA /* libMPEG2StreamTables.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C719AC91E84114000EB6ECA /* libMPEG2StreamTables.h */; };
@@ -16,9 +15,17 @@
 		2C719AD11E84115B00EB6ECA /* MuxMPEG2Stream.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C719AD01E84115B00EB6ECA /* MuxMPEG2Stream.h */; };
 		2C719AD31E84117000EB6ECA /* DemuxMPEG2Stream.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C719AD21E84117000EB6ECA /* DemuxMPEG2Stream.c */; };
 		2C719AD51E84117800EB6ECA /* MuxMPEG2Stream.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C719AD41E84117800EB6ECA /* MuxMPEG2Stream.c */; };
+		2CF36028201AE483005A11BB /* libBitIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C03FC741E850B260075BA8C /* libBitIO.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2C0375E5201AE7FD000B881E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C03FC6C1E850B260075BA8C /* BitIO.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C419FD41E5B00CC00FC804F;
+			remoteInfo = BitIO;
+		};
 		2C03FC731E850B260075BA8C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2C03FC6C1E850B260075BA8C /* BitIO.xcodeproj */;
@@ -46,7 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C03FC751E850B420075BA8C /* libBitIO.a in Frameworks */,
+				2CF36028201AE483005A11BB /* libBitIO.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +185,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				2C0375E6201AE7FD000B881E /* PBXTargetDependency */,
 			);
 			name = libMPEG2Stream;
 			productName = libMPEG2Stream;
@@ -190,7 +198,7 @@
 		2C09AAF21E2C37850050540F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Marcus Johnson";
 				TargetAttributes = {
 					2C4C541F1E37608000F71507 = {
@@ -246,6 +254,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		2C0375E6201AE7FD000B881E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BitIO;
+			targetProxy = 2C0375E5201AE7FD000B881E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
 		2C09AAFC1E2C37850050540F /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -256,7 +272,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -264,7 +282,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -318,7 +340,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -326,7 +350,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -372,27 +400,32 @@
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 628J9L7WK5;
 				EXECUTABLE_PREFIX = "";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = c11;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/Packages/libBitIO/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_STYLE = all;
 			};
 			name = Debug;
 		};
 		2C4C54231E37608000F71507 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COPY_PHASE_STRIP = NO;
+				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_POSTPROCESSING = YES;
 				DEVELOPMENT_TEAM = 628J9L7WK5;
 				EXECUTABLE_PREFIX = "";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = c11;
+				GCC_OPTIMIZATION_LEVEL = s;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/Packages/libBitIO/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_STYLE = all;
 			};
 			name = Release;
 		};

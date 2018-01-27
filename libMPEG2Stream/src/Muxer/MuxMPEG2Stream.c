@@ -7,19 +7,19 @@
 extern "C" {
 #endif
     
-    void MuxMPEG2PESPacket(BitInput *BitO, Packet2Mux *Packet) {
+    void MuxMPEG2PESPacket(Packet2Mux *Packet, BitBuffer *BitB) {
         
     }
     
-    void MuxMPEG2ProgramStream(BitInput *BitO, Packet2Mux *Packet) {
+    void MuxMPEG2ProgramStream(Packet2Mux *Packet, BitBuffer *BitB) {
         
     }
     
-    void MuxMPEG2TransportStream(BitInput *BitO, Packet2Mux *Packet) {
+    void MuxMPEG2TransportStream(Packet2Mux *Packet, BitBuffer *BitB) {
         
     }
     
-    void SpliceMPEG2TransportStream(BitInput *BitO, Packet2Mux *Packet) {
+    void SpliceMPEG2TransportStream(Packet2Mux *Packet, BitBuffer *BitB) {
         
     }
     
