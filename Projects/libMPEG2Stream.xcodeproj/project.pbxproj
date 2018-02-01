@@ -317,17 +317,18 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
-					"-fvectorize",
-					"-funroll-loops",
-					"-ferror-limit=1024",
-					"-Wall",
-					"-Wextra",
-					"-pedantic",
-					"-Weverything",
+					"$(inherited)",
+					"-funsigned-char",
 				);
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = "macosx iphoneos";
 				VALID_ARCHS = "arm64 x86_64";
+				WARNING_CFLAGS = (
+					"-ferror-limit=1024",
+					"-Weverything",
+					"-Wno-c99-compat",
+					"-Wno-conversion",
+				);
 			};
 			name = Debug;
 		};
@@ -380,17 +381,18 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_CFLAGS = (
-					"-fvectorize",
-					"-funroll-loops",
-					"-ferror-limit=1024",
-					"-Wall",
-					"-Wextra",
-					"-pedantic",
-					"-Weverything",
+					"$(inherited)",
+					"-funsigned-char",
 				);
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = "macosx iphoneos";
 				VALID_ARCHS = "arm64 x86_64";
+				WARNING_CFLAGS = (
+					"-ferror-limit=1024",
+					"-Weverything",
+					"-Wno-c99-compat",
+					"-Wno-conversion",
+				);
 			};
 			name = Release;
 		};
