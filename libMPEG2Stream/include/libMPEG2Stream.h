@@ -6,7 +6,7 @@
  @brief     This library contains a muxer and demuxer for MPEG2-TS aka H.222 streams
  */
 
-#include "../../Dependencies/BitIO/libBitIO/include/BitIO.h"
+#include "../../Dependencies/FoundationIO/libFoundationIO/include/BitIO.h"
 #include "libMPEG2StreamTables.h"
 
 #pragma once

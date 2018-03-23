@@ -1,4 +1,4 @@
-#include "../../../Dependencies/BitIO/libBitIO/include/BitIO.h"
+#include "../../../Dependencies/FoundationIO/libFoundationIO/include/BitIO.h"
 #include "../../include/libMPEG2Stream.h"
 #include "../../include/MPEG2StreamTypes.h"
 #include "../../include/Muxer/MuxMPEG2Stream.h"

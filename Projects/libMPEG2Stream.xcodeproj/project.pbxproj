@@ -15,28 +15,19 @@
 		2C719AD11E84115B00EB6ECA /* MuxMPEG2Stream.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C719AD01E84115B00EB6ECA /* MuxMPEG2Stream.h */; };
 		2C719AD31E84117000EB6ECA /* DemuxMPEG2Stream.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C719AD21E84117000EB6ECA /* DemuxMPEG2Stream.c */; };
 		2C719AD51E84117800EB6ECA /* MuxMPEG2Stream.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C719AD41E84117800EB6ECA /* MuxMPEG2Stream.c */; };
-		2CF36028201AE483005A11BB /* libBitIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C03FC741E850B260075BA8C /* libBitIO.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2C0375E5201AE7FD000B881E /* PBXContainerItemProxy */ = {
+		2CAD4AF32064F67F00F14B93 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 2C03FC6C1E850B260075BA8C /* BitIO.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 2C419FD41E5B00CC00FC804F;
-			remoteInfo = BitIO;
-		};
-		2C03FC731E850B260075BA8C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2C03FC6C1E850B260075BA8C /* BitIO.xcodeproj */;
+			containerPortal = 2CAD4AEF2064F67F00F14B93 /* FoundationIO.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 2C419FD51E5B00CC00FC804F;
-			remoteInfo = libBitIO;
+			remoteGlobalIDString = 2CB774FF2036200700C0F8DB;
+			remoteInfo = FoundationIO;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2C03FC6C1E850B260075BA8C /* BitIO.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BitIO.xcodeproj; path = ../Dependencies/BitIO/Projects/BitIO.xcodeproj; sourceTree = "<group>"; };
 		2C4C54201E37608000F71507 /* libMPEG2Stream.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMPEG2Stream.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C6018A11E97702E00B112A9 /* libMPEG2Stream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = libMPEG2Stream.c; path = ../libMPEG2Stream/src/libMPEG2Stream.c; sourceTree = "<group>"; };
 		2C719AC81E84114000EB6ECA /* libMPEG2Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libMPEG2Stream.h; path = ../libMPEG2Stream/include/libMPEG2Stream.h; sourceTree = "<group>"; };
@@ -46,6 +37,7 @@
 		2C719AD01E84115B00EB6ECA /* MuxMPEG2Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MuxMPEG2Stream.h; path = ../libMPEG2Stream/include/Muxer/MuxMPEG2Stream.h; sourceTree = "<group>"; };
 		2C719AD21E84117000EB6ECA /* DemuxMPEG2Stream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = DemuxMPEG2Stream.c; path = ../libMPEG2Stream/src/Demuxer/DemuxMPEG2Stream.c; sourceTree = "<group>"; };
 		2C719AD41E84117800EB6ECA /* MuxMPEG2Stream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = MuxMPEG2Stream.c; path = ../libMPEG2Stream/src/Muxer/MuxMPEG2Stream.c; sourceTree = "<group>"; };
+		2CAD4AEF2064F67F00F14B93 /* FoundationIO.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FoundationIO.xcodeproj; path = ../Dependencies/FoundationIO/Projects/FoundationIO.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +45,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CF36028201AE483005A11BB /* libBitIO.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,17 +54,9 @@
 		2C03FC6B1E850AE70075BA8C /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				2C03FC6C1E850B260075BA8C /* BitIO.xcodeproj */,
+				2CAD4AEF2064F67F00F14B93 /* FoundationIO.xcodeproj */,
 			);
 			name = Dependencies;
-			sourceTree = "<group>";
-		};
-		2C03FC6D1E850B260075BA8C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				2C03FC741E850B260075BA8C /* libBitIO.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		2C09AAF11E2C37850050540F = {
@@ -156,6 +139,14 @@
 			name = Muxer;
 			sourceTree = "<group>";
 		};
+		2CAD4AF02064F67F00F14B93 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2CAD4AF42064F67F00F14B93 /* libFoundationIO.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -185,7 +176,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				2C0375E6201AE7FD000B881E /* PBXTargetDependency */,
 			);
 			name = libMPEG2Stream;
 			productName = libMPEG2Stream;
@@ -220,8 +210,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 2C03FC6D1E850B260075BA8C /* Products */;
-					ProjectRef = 2C03FC6C1E850B260075BA8C /* BitIO.xcodeproj */;
+					ProductGroup = 2CAD4AF02064F67F00F14B93 /* Products */;
+					ProjectRef = 2CAD4AEF2064F67F00F14B93 /* FoundationIO.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -232,11 +222,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		2C03FC741E850B260075BA8C /* libBitIO.a */ = {
+		2CAD4AF42064F67F00F14B93 /* libFoundationIO.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libBitIO.a;
-			remoteRef = 2C03FC731E850B260075BA8C /* PBXContainerItemProxy */;
+			path = libFoundationIO.a;
+			remoteRef = 2CAD4AF32064F67F00F14B93 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -253,14 +243,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		2C0375E6201AE7FD000B881E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = BitIO;
-			targetProxy = 2C0375E5201AE7FD000B881E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		2C09AAFC1E2C37850050540F /* Debug */ = {
